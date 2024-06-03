@@ -441,12 +441,12 @@ class QrCode
 			$flag = true;
 			while ($flag) {
 				if ($remainingBit > $bufferBit) {
-					$this->wordData[$wordCount] = ((@$this->wordData[$wordCount] << $bufferBit) | $bufferVal);
+					$this->wordData[$wordCount] = (($this->wordData[$wordCount] << $bufferBit) | $bufferVal);
 					$remainingBit -= $bufferBit;
 					$flag = false;
 				} else {
 					$bufferBit -= $remainingBit;
-					$this->wordData[$wordCount] = ((@$this->wordData[$wordCount] << $remainingBit) | ($bufferVal >> $bufferBit));
+					$this->wordData[$wordCount] = (($this->wordData[$wordCount] << $remainingBit) | ($bufferVal >> $bufferBit));
 					$wordCount++;
 
 					if ($bufferBit === 0) {
