@@ -66,4 +66,10 @@ class QrCodeTest extends \Yoast\PHPUnitPolyfills\TestCases\TestCase
 		new QrCode(base64_encode(random_bytes(1024 * 3)));
 	}
 
+    public function testUndefinedIndex()
+    {
+        $qr = new QrCode('1234567890123456.gov.bcb.pix0114028268660001815204000053039865406119.925802BR5912Clip Oba Oba6013Monten Matriz62120508v10173176304F297');
+        $this->assertInstanceOf(QrCode::class, $qr);
+    }
+
 }
