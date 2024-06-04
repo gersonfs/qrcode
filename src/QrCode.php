@@ -440,14 +440,14 @@ class QrCode
 
 			$flag = true;
 			while ($flag) {
-				$wordDataValue = isset($this->wordData[$wordCount]) ? $this->wordData[$wordCount] : null;
+				$this->wordData[$wordCount] = isset($this->wordData[$wordCount]) ? $this->wordData[$wordCount] : 0;
 				if ($remainingBit > $bufferBit) {
-					$this->wordData[$wordCount] = (($wordDataValue << $bufferBit) | $bufferVal);
+					$this->wordData[$wordCount] = (($this->wordData[$wordCount] << $bufferBit) | $bufferVal);
 					$remainingBit -= $bufferBit;
 					$flag = false;
 				} else {
 					$bufferBit -= $remainingBit;
-					$this->wordData[$wordCount] = (($wordDataValue << $remainingBit) | ($bufferVal >> $bufferBit));
+					$this->wordData[$wordCount] = (($this->wordData[$wordCount] << $remainingBit) | ($bufferVal >> $bufferBit));
 					$wordCount++;
 
 					if ($bufferBit === 0) {
